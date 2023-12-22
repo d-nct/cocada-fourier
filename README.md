@@ -18,14 +18,18 @@ cocada-fourier/
 ├── documentacao.md
 ├── README.md
 ├── static
-│   ├── draws.js
-│   ├── fourier.js
-│   ├── inputHandler.js
-│   ├── p5.js
-│   ├── sketch_circulo.js
-│   ├── sketch_complexos.js
-│   ├── sketch_desenhar.js
-│   └── sketch_onda_quadrada.js
+│   ├── draws.js
+│   ├── fourier.js
+│   ├── images
+│   │   ├── Untitled 1.png
+│   │   ├── Untitled 2.png
+│   │   └── Untitled.png
+│   ├── inputHandler.js
+│   ├── p5.js
+│   ├── sketch_circulo.js
+│   ├── sketch_complexos.js
+│   ├── sketch_desenhar.js
+│   └── sketch_onda_quadrada.js
 └── templates
     ├── 1.html
     ├── 2.html
@@ -33,6 +37,7 @@ cocada-fourier/
     ├── 4.html
     ├── base.html
     ├── index.html
+    ├── relatorio.html
     └── style.css
 ```
 
@@ -72,8 +77,8 @@ $ python3 app.py
  * Debug mode: on
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5000
- * Running on http://192.168.0.224:5000
+ * Running on http://127.0.0.1:5000            <- aqui é o localhost
+ * Running on http://192.168.0.224:5000        <- por esse endereço é possível acessar de qualquer dispositivo na rede local
 Press CTRL+C to quit
  * Restarting with stat
  * Debugger is active!
@@ -91,7 +96,7 @@ Qualquer um funciona.
 
 O endereço de IP da sua máquina será exibido no console assim que o servidor for iniciado.
 
-# Roadmap
+# Para o Futuro
 
 - [ ] Adicionar controle de velocidade para display de desenhos
 - [ ] Adicionar a opção de diminuir a complexidade do desenho
