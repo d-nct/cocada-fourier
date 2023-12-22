@@ -22,6 +22,10 @@ def page3():
 def page4():
     return render_template("4.html")
 
+@app.route("/relatorio")
+def relatorio():
+    return render_template("relatorio.html")
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True) # ipv4
     #app.run(host='::', port=5000, debug=True) # ipv6

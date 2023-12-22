@@ -69,9 +69,9 @@ function draw() {
   background(0); // fundo preto
   
   // momento do fourier brilhar
-  let cabX = desenhaEpiciclo(CANVAS_X/2 + 100, 100, entradaProcessadaX); // desenha os epiciclos
-  let cabY = desenhaEpiciclo(100, CANVAS_Y/2 + 100, entradaProcessadaY, rotacao=PI/2); 
-  let ponto = createVector(cabX.x, cabY.y);
+  let cabY = desenhaEpiciclo(CANVAS_X/2 + 100, 100, entradaProcessadaX); // desenha os epiciclos
+  let cabX = desenhaEpiciclo(100, CANVAS_Y/2 + 100, entradaProcessadaY, rotacao=PI/2); 
+  let ponto = createVector(cabY.x, cabX.y);
 
   // Desenha a curva
   curva.unshift(ponto); // adiciona o ponto no início do array
@@ -85,6 +85,18 @@ function draw() {
   // desenha uma linha que conecta a cabeça de cada fourier com a curva
   line(cabX.x, cabX.y, ponto.x, ponto.y);
   line(cabY.x, cabY.y, ponto.x, ponto.y);
+
+  // desenha as cabeças
+  stroke(0, 255, 0) // verde
+  fill(0, 255, 0);
+  ellipse(cabX.x, cabX.y, 5);
+  stroke(255, 0, 0); // vermelho
+  fill(255, 0, 0);
+  ellipse(cabY.x, cabY.y, 5);
+
+  stroke(255, 255, 0); // amarelo
+  fill(255, 255, 0);
+  ellipse(ponto.x, ponto.y, 5);
 
   // acabou o fourier, agora é só animação
   tempo += velocidade;
