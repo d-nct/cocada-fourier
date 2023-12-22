@@ -24,12 +24,11 @@ function mouseReleased() {
   state = FOURIER;
   const skip = 1;
   for (let i = 0; i < drawing.length; i += skip) {
-    const c = new Complex(drawing[i].x, drawing[i].y);
-    // const c = new Complexo(drawing[i].x, drawing[i].y);
+    let c = new Complexo(drawing[i].x, drawing[i].y);
     entrada.push(c);
   }
-  entradaProcessada = transformadaDiscretaFourier_basicona_complexa(entrada); // magia!!
-  // entradaProcessada = cooleyTukey(entrada); // magia!!
+  entradaProcessada = transformadaDiscretaFourier_complexa(entrada); // magia!!
+  // entradaProcessada = cooleyTukey(entrada); // TODO: implementar
 
   entradaProcessada.sort((a, b) => b.amplitude - a.amplitude); // ordena os pontos por amplitude
 }
