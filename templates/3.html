@@ -13,7 +13,17 @@
   </head>
   <body>
     <main>
-    <script src="{{ url_for('static', filename='sketch_desenhar.js') }}"></script>
+      <h1><span style="font-family:Verdana,Geneva,sans-serif">Transformada de Fourier para Desenho Livre</span></h1>
+
+      <p><span style="font-family:Verdana,Geneva,sans-serif">Sinta-se a vontade para criar desenhos e observar como a transformada de fourier consegue capturar e reproduzi-los!</span></p>
+      
+      <p><span style="font-family:Verdana,Geneva,sans-serif">Para desenhar, basta pressionar o bot&atilde;o esquerdo do mouse sobre o canvas (espa&ccedil;o com fundo preto).</span></p>
+      
+      <p><span style="font-family:Verdana,Geneva,sans-serif"><u>Dica:</u> Voc&ecirc; tamb&eacute;m pode acessar essa p&aacute;gina pelo celular e desenhar com o dedo! Para saber como, consulte <a class="nav-link" href="/celular"><u><span style="color:#2980b9">este tutorial</span></u></a>. &Eacute; bem mais divertido, acredite.</span></p>
+      
+      <p><span style="font-family:Verdana,Geneva,sans-serif"><em><span style="font-size:11px">Obs.: Se clicar novamente, seu desenho atual ser&aacute; perdido para todo o sempre!</span></em></span></p>
+      
+      <script src="{{ url_for('static', filename='sketch_desenhar.js') }}"></script>
     </main>
   </body>
 </html>

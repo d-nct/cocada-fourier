@@ -19,20 +19,21 @@ function setup() {
   createCanvas(CANVAS_X, CANVAS_Y);
 
   // sliders
+  const deslocamento_texto = 170;
   sliderR = createSlider(0, 2, 1, 0.01); // de 0 a 2, começa em 1, passo de 0.01
-  sliderR.position(10, CANVAS_Y + 150);
+  sliderR.position(10, CANVAS_Y + 150 + deslocamento_texto);
   sliderR.style('width', '160px');
-  createDiv('Raio - Amplitude: ' + sliderR.value()).position(10, CANVAS_Y + 130);
+  createDiv('Raio - Amplitude: ' + sliderR.value()).position(10, CANVAS_Y + 130 + deslocamento_texto);
 
   sliderComplex = createSlider(1, 100, 3); // de 1 a 15, começa em 3
-  sliderComplex.position(10, CANVAS_Y + 30);
+  sliderComplex.position(10, CANVAS_Y + 30 + deslocamento_texto); 
   sliderComplex.style('width', '160px');
-  createDiv('Nº de circunferências: ' + sliderComplex.value()).position(10, CANVAS_Y + 10);
+  createDiv('Nº de circunferências: ' + sliderComplex.value()).position(10, CANVAS_Y + 10 + deslocamento_texto);
 
   sliderVelocidade = createSlider(0.01, 0.35, 0.05, 0.01); // de 0.01 a 0.35, começa em 0.05, passo de 0.01
-  sliderVelocidade.position(10, CANVAS_Y + 90);
+  sliderVelocidade.position(10, CANVAS_Y + 90 + deslocamento_texto);
   sliderVelocidade.style('width', '160px');
-  createDiv('Velocidade - Frequência: ' + sliderVelocidade.value()).position(10, CANVAS_Y + 70);
+  createDiv('Velocidade - Frequência: ' + sliderVelocidade.value()).position(10, CANVAS_Y + 70 + deslocamento_texto);
 
 }
 
@@ -68,12 +69,20 @@ function draw() {
     fill(255);
     line(xAnt, yAnt, x, y); // linha
     ellipse(x, y, LARGURA_PT); // cabeça da linha
+
+    // pinta a última cabeça de vermelho
+    if (i == sliderComplex.value() - 1) {
+      stroke(255, 0, 0); // vermelho
+      fill(255, 0, 0);
+      ellipse(x, y, LARGURA_PT); // cabeça da linha
+    }
   }
 
   // Desenha a senoide
   translate(CANVAS_X/4, 0); // joga a senoide para a direita
   senoide.unshift(y); // adiciona o valor de y no início do array
   beginShape();
+  stroke(255); // branco
   noFill();
   for(let i = 0; i < senoide.length; i++) {
     vertex(i, senoide[i]);
@@ -83,6 +92,10 @@ function draw() {
   // desenha uma linha que conecta a cabeça com a senoide
   line(x - (CANVAS_X/4), y, 0, y); // o - raio é por causa do translate
   
+  // desenha a cabeça vermelha na senoide
+  stroke(255, 0, 0); // vermelho
+  fill(255, 0, 0);
+  ellipse(0, y, LARGURA_PT); // cabeça da linha
 
   // acabou o fourier, agora é só animação
   tempo -= sliderVelocidade.value();

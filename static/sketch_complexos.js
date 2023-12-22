@@ -30,12 +30,12 @@ function mouseReleased() {
   entradaProcessada = transformadaDiscretaFourier_complexa(entrada); // magia!!
   // entradaProcessada = cooleyTukey(entrada); // TODO: implementar
 
-  entradaProcessada.sort((a, b) => b.amplitude - a.amplitude); // ordena os pontos por amplitude
+  entradaProcessada.sort((a, b) => b.amplitude - a.amplitude); // ordena os epiciclos por amplitude
 }
 
 function setup() {
-  createCanvas(CANVAS_X, CANVAS_Y);
   createP("Desenhe algo para ser aproximado com a transformada de Fourier!");
+  createCanvas(CANVAS_X, CANVAS_Y);
 
   // desativa a rolagem para qualquer lado no mobile
   document.body.addEventListener('touchmove', function (e) {

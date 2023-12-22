@@ -8,7 +8,7 @@ let entradaProcessadaX = []; // vetor para armazenar os pontos da transformada
 let entradaProcessadaY = [];
 let velocidade = 0;
 
-let checkErro;
+// let checkErro; Desativado por enquanto, a feature não ficou boa
 
 const CANVAS_X = 600;        // largura do canvas
 const CANVAS_Y = 600;        // altura do canvas
@@ -17,8 +17,8 @@ function setup() {
   createCanvas(CANVAS_X, CANVAS_Y);
 
   // define as entradas
-  entradaX = getCossenoide();
-  entradaY = getSenoide();
+  entradaX = getCossenoide(amplitude=100);
+  entradaY = getSenoide(amplitude=100);
 
   // pré processamento as entradas
   entradaProcessadaX = transformadaDiscretaFourier(entradaX);
@@ -32,8 +32,8 @@ function setup() {
   velocidade = 2*PI / entradaProcessadaY.length;
 
   // checkbox
-  checkErro = createCheckbox('Mostrar acúmulo do erro aritimético?', false);
-  checkErro.position(10, CANVAS_Y + 10);
+  // checkErro = createCheckbox('Mostrar acúmulo do erro aritimético?', false);
+  // checkErro.position(10, CANVAS_Y + 10);
 }
 
 function desenhaEpiciclo(x0, y0, epiciclos, rotacao=0) {
@@ -100,12 +100,11 @@ function draw() {
 
   // acabou o fourier, agora é só animação
   tempo += velocidade;
-  // tempo += 0.001;
 
   // economia de memória
   if (curva.length > 200) {
-    if (!checkErro.checked()) { 
+    // if (!checkErro.checked()) { 
       curva.pop(); // remove o último elemento do array
-    }
+    // }
   }
 }

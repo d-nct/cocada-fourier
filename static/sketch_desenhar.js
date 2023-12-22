@@ -33,6 +33,7 @@ function mouseReleased() {
   entradaProcessadaX = transformadaDiscretaFourier(entradaX);
   entradaProcessadaY = transformadaDiscretaFourier(entradaY);
 
+  // ordena os epiciclos por amplitude
   entradaProcessadaX.sort((a, b) => b.amp - a.amp);
   entradaProcessadaY.sort((a, b) => b.amp - a.amp);
 }
