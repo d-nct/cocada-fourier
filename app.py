@@ -25,6 +25,10 @@ def page4():
 @app.route("/relatorio")
 def relatorio():
     return render_template("relatorio.html")
+    
+@app.route("/celular")
+def celular():
+    return render_template("tutorial_celular.html")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True) # ipv4
