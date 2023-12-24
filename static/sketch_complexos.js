@@ -22,12 +22,13 @@ function mousePressed() { // zera tudo
 }
 function mouseReleased() {
   state = FOURIER;
+
+  // cria a entrada como sabemos ler
   const skip = 1;
   for (let i = 0; i < drawing.length; i += skip) {
-    let c = new Complexo(drawing[i].x, drawing[i].y);
-    entrada.push(c);
+    entrada.push(new Complexo(drawing[i].x, drawing[i].y)); 
   }
-  entradaProcessada = transformadaDiscretaFourier_complexa(entrada); // magia!!
+  entradaProcessada = transformadaDiscretaFourier_complexa_CT(entrada); // magia!!
   // entradaProcessada = cooleyTukey(entrada); // TODO: implementar
 
   entradaProcessada.sort((a, b) => b.amplitude - a.amplitude); // ordena os epiciclos por amplitude
