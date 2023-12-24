@@ -2,17 +2,99 @@
 {% block title %} Página Inicial - Fourier {% endblock %}
 {% block content %}
 
-<h1 id="páginas">Páginas</h1>
-<h2 id="1html">Onda Quadrada</h2>
-<p>Modelo de Tranformada Discreta de Fourier simulando ondas quadradas.</p>
-<h2 id="2html">No Plano</h2>
-<p>Transformada Discreta de Fourier em duas dimensões.</p>
-<p>Usamos círculos para desenhar uma circunferência!</p>
-<h2 id="3html">Desenho Livre</h2>
-<p>Desenho livre com Fourier!</p>
-<p>Desenhe algo na tela e veja o caminho do mouse ser aproximado pela Transformada Discreta de Fourier.</p>
-<h2 id="4html">Complexos</h2>
-<p>Desenho livre com Fourier usando números complexos!</p>
-<p>Note que agora só temos uma máquina de desenhar que sabe desenhar nos dois eixos.</p>
+<h1 id="desenhando-com-fourier">Desenhando Com Fourier</h1>
+<p>O programa foi elaborado como Projeto Final de tema livre da disciplina de Computação Científica e Análise de Dados (COCADA), ofertada pelo Instituto de Computação (IC) da Universidade Federal do Rio de Janeiro (UFRJ).</p>
+<p>A ideia é entender as Séries de Fourier e as Transformadas de Fourier com visualização através de animações interativas.</p>
+<p>Para mais detalhes, consulte o relatório diretamente pelo site!</p>
+<h2 id="navegando-pelo-site">Navegando pelo Site</h2>
+<p>Como o foco do projeto não era a estética, recomendo deixar duas janelas do navegador abertas, uma sempre com o relatório aberto e outra para navegar e interagir com as visualizações. </p>
+<h2 id="estrtura-de-arquivos-do-projeto">Estrtura de Arquivos do Projeto</h2>
+<pre><code>cocada-fourier/
+├── app.py
+├── README.md
+├── static
+│   ├── fourier.js
+│   ├── images
+│   │   ├── 1_senoides_combinadas.png
+│   │   ├── 2_circunf_trigonometrica.png
+│   │   └── 3_identidade_euler.png
+│   ├── inputHandler.js
+│   ├── p5.js
+│   ├── sketch_circulo.js
+│   ├── sketch_complexos.js
+│   ├── sketch_desenhar.js
+│   └── sketch_onda_quadrada.js
+└── templates
+    ├── 1.html
+    ├── 2.html
+    ├── 3.html
+    ├── 4.html
+    ├── base.html
+    ├── index.html
+    ├── relatorio.html.
+    ├── style.css
+    └── tutorial_celular.html
+</code></pre>
+<ul>
+<li><code>app.py</code>: Contém o arquivo principal do site em flask. Na verdade, só serve para unir as páginas HTML.</li>
+<li><code>README.md</code>: Este arquivo README explicativo.</li>
+<li><code>static/</code>: Contém arquivos estáticos, como JavaScript e as imagens do relatório.<ul>
+<li><code>fourier.js</code>: Contém as implementações da DFT para: vetor de pontos, complexos e complexos com FFT (Cooley-Tukey) (esboço).</li>
+<li><code>images/</code>: Diretório para as imagens do relatório</li>
+<li><code>inputHandler.js</code>: Este arquivo é responsável por prover dados de input para a DFT. Atualmente, só entrega um vetor de cosseno e seno para desenhar o círculo.</li>
+<li><code>p5.js</code>: Biblioteca javascript utilizada para as animações.</li>
+<li><code>sketch_circulo</code>: Contém a animação que desenha a circunferência usando sen e cos.</li>
+<li><code>sketch_complexos</code>: Contém a animação do desenho livre com números complexos.</li>
+<li><code>sketch_desenhar</code>: Contém a animação do desenho livre com duas máquinas de desenhar.</li>
+<li><code>sketch_onda_quadrada</code>: Contém o simulador de ondas quadradas.</li>
+</ul>
+</li>
+<li><code>templates/</code>: Contém os arquivos HTML para renderização pelo Flask.<ul>
+<li><code>1-4.html</code>: Páginas com breve descrição sobre cada animação.</li>
+<li><code>base.html</code>: Barra superior para a página inicial. Não foi compatível com o bootstrap do notion nem com o <code>p5js</code>, então não foi utilizado nas demais páginas.</li>
+<li><code>index.html</code>: Página inicial do site. É esse README convertido para HTML.</li>
+<li><code>relatorio.html</code>: Relatório do notion convertido para HTML.</li>
+<li><code>style.css</code>: Arquivo padrão de CSS do projeto <code>p5js</code>.</li>
+<li><code>tutorial_celular.html</code>: Guia sobre como acessar o site local pelo celular para desenhar com o dedo.</li>
+</ul>
+</li>
+</ul>
+<h1 id="instalação">Instalação</h1>
+<h2 id="dependências">Dependências</h2>
+<p>O programa usa o Flask do Python e o p5.js do JavaScript. Esta última já está inclusa no repositório, então só é necessário instalar o Flask com </p>
+<pre><code class="language-sh">pip install flask
+</code></pre>
+<h2 id="rodando-o-webserver">Rodando o WebServer</h2>
+<p>Para rodar o servidor, basta executar o comando</p>
+<pre><code class="language-sh">python3 app.py
+</code></pre>
+<p>Uma saída de sucesso é algo do tipo </p>
+<pre><code class="language-sh">$ python3 app.py 
+ * Serving Flask app &#39;app&#39;
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000            &lt;- aqui é o localhost
+ * Running on http://192.168.0.224:5000        &lt;- por esse endereço é possível acessar de qualquer dispositivo na rede local
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 115-228-340
+</code></pre>
+<h3 id="executando-na-rede-local">Executando na Rede Local</h3>
+<p>Para que todos na rede local tenham acesso ao site, basta utilizar como host (no método <code>app.run</code>, em <code>app.py</code>) o endereço de broadcast:</p>
+<ul>
+<li>Para IPv4, é <code>&#39;0.0.0.0&#39;</code></li>
+<li>Para IPv6, é <code>&#39;::&#39;</code></li>
+</ul>
+<p>Qualquer um funciona.</p>
+<p>O endereço de IP da sua máquina será exibido no console assim que o servidor for iniciado. Basta acessar pelo navegador do dispositivo móvel na mesma rede wifi por ele.</p>
+<h1 id="para-o-futuro">Para o Futuro</h1>
+<ul>
+<li>[~] Implementar a FFT.</li>
+<li><input disabled="" type="checkbox"> Adicionar controle de velocidade para display de desenhos.</li>
+<li><input disabled="" type="checkbox"> Adicionar a opção de diminuir a complexidade do desenho, removendo as N menores circunferências.</li>
+<li><input disabled="" type="checkbox"> Fazer o programa aceitar imagens SVG como entrada da Transformada Discreta de Fourier.</li>
+</ul>
 
 {% endblock %}
