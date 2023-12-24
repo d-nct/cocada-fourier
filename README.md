@@ -98,6 +98,11 @@ O endereço de IP da sua máquina será exibido no console assim que o servidor 
 
 # Para o Futuro
 
-- [ ] Adicionar controle de velocidade para display de desenhos
-- [ ] Adicionar a opção de diminuir a complexidade do desenho
-- [ ] Fazer o programa aceitar imagens SVG como entrada da Transformada Discreta de Fourier
+- [~] Implementar a FTT.
+- [ ] Adicionar controle de velocidade para display de desenhos.
+- [ ] Adicionar a opção de diminuir a complexidade do desenho.
+- [ ] Fazer o programa aceitar imagens SVG como entrada da Transformada Discreta de Fourier.
+
+# pra entregar
+- Mencionar q tentei implementar a ftt
+- refazer a homepage!
